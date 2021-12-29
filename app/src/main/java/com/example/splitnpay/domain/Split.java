@@ -1,5 +1,6 @@
 package com.example.splitnpay.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Split {
+public class Split implements Serializable {
     private String name;
     private List<String> buyers;
     private double total;

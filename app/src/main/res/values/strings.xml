@@ -2,4 +2,6 @@
     <string name="app_name">SplitNPay</string>
     <string name="add_bill">Add Bill</string>
     <string name="add_bill_button">Add bill</string>
+    <string name="add_bill_save">Save</string>
+    <string name="textview_bill_name">TextView</string>
 </resources>

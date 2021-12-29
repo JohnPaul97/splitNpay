@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Bill {
+public class Bill implements Serializable {
     private String name;
     private List<Split> splits;
     private Double total;
