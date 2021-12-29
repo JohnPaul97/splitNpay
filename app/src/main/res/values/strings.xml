@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SplitNPay</string>
     <string name="add_bill">Add Bill</string>
+    <string name="add_bill_button">Add bill</string>
 </resources>

@@ -2,25 +2,21 @@ package com.example.splitnpay;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.splitnpay.domain.Bill;
+import com.example.splitnpay.ui.main.BillItemAdapter;
 import com.example.splitnpay.ui.main.MainFragment;
 import com.example.splitnpay.ui.main.MainViewModel;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel mainViewModel = null;
-
-
-
+    private ListView listView;
+    private BillItemAdapter billItemAdapter;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -33,30 +29,21 @@ public class MainActivity extends AppCompatActivity {
                     .commitNow();
         }
 
+        listView = findViewById(R.id.bills_list);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        billItemAdapter = new BillItemAdapter(this, R.layout.support_simple_spinner_dropdown_item, mainViewModel.getBillsList().getValue());
 
-        mainViewModel.getBillsList().observe(this, this::outputBills);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void outputBills(final List<Bill> bills) {
-        setContentView(R.layout.main_activity);
-        ListView listView = (ListView) findViewById(R.id.list);
-
-        ArrayAdapter<Bill> billArrayAdapter = new ArrayAdapter<Bill>(
-                this, R.layout.support_simple_spinner_dropdown_item, bills);
-        listView.setAdapter(billArrayAdapter);
+        listView.setAdapter(billItemAdapter);
+//        mainViewModel.getBillsList().observe(this, this::outputBills);
     }
 
 //    @RequiresApi(api = Build.VERSION_CODES.N)
-//    private void outputBills() {
+//    private void outputBills(final List<Bill> bills) {
 //        setContentView(R.layout.main_activity);
-//        ListView listView = (ListView) findViewById(R.id.list);
-//
-//        Toast.makeText(this.getApplicationContext(), "should ouptut ", Toast.LENGTH_LONG).show();
+//        ListView listView = (ListView) findViewById(R.id.bills_list);
 //
 //        ArrayAdapter<Bill> billArrayAdapter = new ArrayAdapter<Bill>(
-//                this, R.layout.support_simple_spinner_dropdown_item, mainViewModel.getBillsList().getValue());
+//                this, R.layout.support_simple_spinner_dropdown_item, bills);
 //        listView.setAdapter(billArrayAdapter);
 //    }
 }
