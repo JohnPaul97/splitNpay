@@ -27,25 +27,19 @@
         android:id="@+id/editText_billName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="661dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/edittext_bill_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="93dp" />
 
     <EditText
         android:id="@+id/editText_splitName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:layout_marginTop="165dp"
         android:layout_marginBottom="521dp"
         android:ems="10"
@@ -53,14 +47,15 @@
         android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editText_splitBuyers"
         android:layout_width="333dp"
         android:layout_height="89dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:layout_marginTop="238dp"
         android:layout_marginBottom="404dp"
         android:autofillHints=""
@@ -69,26 +64,28 @@
         android:text="Buyers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editText_splitTotal"
         android:layout_width="144dp"
         android:layout_height="44dp"
-        android:layout_marginStart="242dp"
-        android:layout_marginLeft="242dp"
+        android:layout_marginStart="268dp"
+        android:layout_marginLeft="268dp"
         android:layout_marginTop="166dp"
         android:layout_marginBottom="521dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView_payments"
-        android:layout_width="376dp"
-        android:layout_height="294dp"
+        android:layout_width="317dp"
+        android:layout_height="265dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="336dp"
@@ -98,8 +95,10 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <!--    <ListView-->
     <!--        android:id="@+id/splits_list"-->

@@ -21,8 +21,8 @@ public class MainViewModel extends ViewModel {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void addBill(final String billName, final Split split) {
-        billRepository.addBill(billName, split);
+    public Bill addBill(final String billName, final Split split) {
+        return billRepository.addBill(billName, split);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -33,20 +33,25 @@ public class BillRepository {
     private MutableLiveData<List<Bill>> bills;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
+    public void fetchListFromCache(final List<Bill> cachedBills) {
+        getBills();
+        bills.setValue(cachedBills);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public LiveData<List<Bill>> getBills() {
         if (bills == null) {
             bills = new MutableLiveData<>();
-            bills.setValue(mockBills());
+//            bills.setValue(mockBills());
         }
 
-        bills.getValue().forEach(System.out::println);
+//        bills.getValue().forEach(System.out::println);
 
         return bills;
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void addBill(final String billName, final Split split) {
+    public Bill addBill(final String billName, final Split split) {
         final Bill bill = findByName(billName)
                 .orElse(new Bill(billName, new ArrayList<>()));
         bill.addSplit(split);
@@ -56,6 +61,8 @@ public class BillRepository {
         newBills.add(bill);
 
         bills.setValue(newBills);
+
+        return bill;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

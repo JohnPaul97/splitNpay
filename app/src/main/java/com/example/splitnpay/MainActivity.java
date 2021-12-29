@@ -1,6 +1,7 @@
 package com.example.splitnpay;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.splitnpay.repository.SharedPreferencesHandler;
 import com.example.splitnpay.ui.main.AddBillItemActivity;
 import com.example.splitnpay.ui.main.BillItemAdapter;
 import com.example.splitnpay.ui.main.MainFragment;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Button addBillButton;
     private BillItemAdapter billItemAdapter;
+    private SharedPreferences sharedPreferences;
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -35,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
                     .commitNow();
         }
 
+        sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
         listView = findViewById(R.id.bills_list);
         addBillButton = findViewById(R.id.button_add_bill);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+        //get items from shared preferences
+        SharedPreferencesHandler.rehidrateLocalCache(sharedPreferences);
+
         billItemAdapter = new BillItemAdapter(this, R.layout.support_simple_spinner_dropdown_item, mainViewModel.getBillsList().getValue());
 
         listView.setAdapter(billItemAdapter);
@@ -61,14 +69,4 @@ public class MainActivity extends AppCompatActivity {
         });
 //        mainViewModel.getBillsList().observe(this, this::outputBills);
     }
-
-//    @RequiresApi(api = Build.VERSION_CODES.N)
-//    private void outputBills(final List<Bill> bills) {
-//        setContentView(R.layout.main_activity);
-//        ListView listView = (ListView) findViewById(R.id.bills_list);
-//
-//        ArrayAdapter<Bill> billArrayAdapter = new ArrayAdapter<Bill>(
-//                this, R.layout.support_simple_spinner_dropdown_item, bills);
-//        listView.setAdapter(billArrayAdapter);
-//    }
 }
