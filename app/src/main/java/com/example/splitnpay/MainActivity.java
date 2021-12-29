@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.RequiresApi;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel mainViewModel = null;
     private ListView listView;
+    private Button addBillButton;
     private BillItemAdapter billItemAdapter;
 
     @Override
@@ -32,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow();
         }
+
         listView = findViewById(R.id.bills_list);
+        addBillButton = findViewById(R.id.button_add_bill);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         billItemAdapter = new BillItemAdapter(this, R.layout.support_simple_spinner_dropdown_item, mainViewModel.getBillsList().getValue());
 
@@ -43,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), AddBillItemActivity.class);
 
                 intent.putExtra("bill", billItemAdapter.getItem(position));
+                startActivity(intent);
+            }
+        });
+
+        addBillButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Intent intent = new Intent(getApplicationContext(), AddBillItemActivity.class);
+
                 startActivity(intent);
             }
         });

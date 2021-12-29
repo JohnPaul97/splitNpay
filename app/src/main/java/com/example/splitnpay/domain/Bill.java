@@ -28,6 +28,12 @@ public class Bill implements Serializable {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
+    public void addSplit(final Split split) {
+        this.splits.add(split);
+        updateTotal();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void updateTotal() {
         total = splits.stream()
                 .map(Split::getTotal)
