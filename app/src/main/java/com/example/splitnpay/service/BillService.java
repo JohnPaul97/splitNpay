@@ -15,19 +15,18 @@ import java.util.stream.Collectors;
 
 public class BillService {
 
-
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Map<String, Double> cashoutBills(List<Bill> bills) {
+    public static Map<String, Double> cashoutBills(List<Bill> bills) {
         return bills.stream()
                 .map(Bill::getSplits)
                 .flatMap(Collection::stream)
-                .map(this::cashoutSplit)
+                .map(BillService::cashoutSplit)
                 .map(Map::entrySet)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Double::sum));
     }
 
-    private Map<String, Double> cashoutSplit(final Split split) {
+    private static Map<String, Double> cashoutSplit(final Split split) {
         final Map<String, Double> toBePayed = new HashMap<>();
 
         final double amountPerBuyer = split.getTotal() / split.getBuyers().size();
