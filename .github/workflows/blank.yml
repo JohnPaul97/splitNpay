@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin' # Use Temurin distribution
-          java-version: '17'      # Specify the Java version (e.g., 8, 11, 17)
+          java-version: '11'      # Specify the Java version (e.g., 8, 11, 17)
 
       # Cache Gradle dependencies
       - name: Cache Gradle dependencies
